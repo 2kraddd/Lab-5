@@ -1,0 +1,81 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class MainApp {
+    public static void main(String[] args) {
+        
+        Scanner input = new Scanner(System.in);
+        ArrayList<String> users = new ArrayList<String>();
+        
+        String name = "";
+        int age = 0;
+        String email = "";
+        String phone = "";
+        
+        boolean valid = false;
+        while (!valid) {
+            System.out.print("Enter name: ");
+            String userInput = input.nextLine();
+            
+            try {
+                name = UserInputValidator.validateName(userInput);
+                valid = true;
+            } catch (invalidInputException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+        
+        valid = false;
+        while (!valid) {
+            System.out.print("Enter age: ");
+            String userInput = input.nextLine();
+            
+            try{
+                age = UserInputValidator.validateAge(userInput);
+                valid = true;
+            } catch (InvalidInputException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+        
+        valid = false;
+        while (!valid) {
+            System.out.print("Enter phone number: ");
+            String userInput = input.nextLine();
+            
+            try {
+                phone = UserInputValidator.validatePhone(userInput);
+                valid = true;
+            } catch (InvalidInputException e) {
+                System.out.println "Error: " + e.getMessage());
+            }
+        }
+        
+        valid = false;
+        while (!valid) {
+            System.out.print("Enter phone number: ");
+            String userInput = input.nextLine();
+
+            try {
+                phone = UserInputValidator.validatePhone(userInput);
+                valid = true;
+            } catch (InvalidInputException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+        
+        String user = "Name: " + name + ", Age: " + age +
+                      ", Email: " + email + ", Phone: " + phone;
+                      
+        users.add(user);
+                      
+        System.out.println("\nUser added successfully!");
+        System.out.println("User List");
+                      
+        for (int i = 0; i < users.size(); i++) {
+        System.out.println(users.get(i));
+
+        }
+        input.close();
+    }
+}
