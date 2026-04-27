@@ -1,0 +1,48 @@
+public class UserInputValidator {
+    
+    public static String validateName(String name) throws InvalidInputExceptio {
+        if (name.trim().equals("")) {
+            throw new InvalidInputException("Name cannot be empty.");
+        }
+        return name;
+    }
+
+    public static int validateAge(String ageInput) throws InvalidInputException {
+        int age;
+    
+        try {
+            age = Integer.parseInt(ageInput);
+        } catch (NumberFormatException e) {
+            throw new InvalidInputException("Age must be a mumber.");
+        }
+    
+        if (age < 0) {
+            throw new InvalidInputException("Age cannot be negative");
+        }
+    
+        return age;
+    }
+
+    public static String validateEmail(String email) throws InvalidInputException {
+        if(!email.contains("@")) ||
+            !(email.endsWith(".com") || email.endsWith(".edu"))) {
+            throw new InvalidInputException("Invalid email format.");
+        }
+        
+        return email;
+    }
+    
+    public static String validatePhone(String phone) throws InvalidInputException {
+        if (phone.length() != 10) {
+            throw new InvalidInputException("Phone number must be 10 digits.");
+        }
+        
+        for (int i = 0; i < phone.length(); i++) {
+            if (!Character.isDigit(phone.charAt(i))) {
+                throw new InvalidInputException("Phone must contain only numbers.");
+            }
+        }
+        
+        return phone;
+    }
+}
